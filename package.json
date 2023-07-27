@@ -10,6 +10,7 @@
   "author": "Andika E. Wiyatno",
   "license": "ISC",
   "dependencies": {
+    "mysql2": "^3.5.2",
     "nanoid": "^4.0.2"
   }
 }

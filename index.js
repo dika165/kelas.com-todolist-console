@@ -4,7 +4,7 @@
 */
 
 import readline from 'readline';
-import { nanoid } from 'nanoid';
+import * as TaskService from './services/task.js';
 
 const tasks = [];
 
@@ -19,7 +19,7 @@ Task Manager App
 Pilih perintah berikut: 
 1. add
 2. list
-3. update
+3. detail
 `);
 
 rl.on('line', (input) => {
@@ -30,8 +30,8 @@ rl.on('line', (input) => {
         case 'list':
             listTask();
             break;
-        case 'update':
-            updateTask();
+        case 'detail':
+            getById();
             break;
         default:
             console.log("command not recognized");
@@ -42,22 +42,22 @@ rl.on('line', (input) => {
 function addtask() {
     rl.question('Masukan nama task: ', (name) => {
         rl.question('Sudah selesai? ', (completed) => {
-            let task = {
-                id: nanoid(6),
-                name: name,
-                completed: completed
-            };
-            // task.name = name;
-            // task.completed = completed;
-            tasks.push(task);
-            console.log("task berhasil di tambah");
+            TaskService.addtask(name, completed);
         });
 
     })
 }
 
 function listTask(){
-    console.log(tasks);
+    TaskService.getAllTask();
+}
+
+function getById(){
+    rl.question('Masukan id task yang ingin dilihat',(id)=>{
+        const task = TaskService.getTaskById(id);
+
+        console.log(task);
+    } )
 }
 
 function updateTask() {
