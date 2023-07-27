@@ -1,0 +1,15 @@
+{
+  "name": "todo-list-console",
+  "version": "1.0.0",
+  "description": "example todolist console",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andika E. Wiyatno",
+  "license": "ISC",
+  "dependencies": {
+    "nanoid": "^4.0.2"
+  }
+}
