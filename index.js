@@ -5,6 +5,7 @@
 
 import readline from 'readline';
 import * as TaskService from './services/task.js';
+import { resolve } from 'path';
 
 const tasks = [];
 
@@ -54,10 +55,10 @@ function listTask(){
 
 function getById(){
     rl.question('Masukan id task yang ingin dilihat',(id)=>{
-        const task = TaskService.getTaskById(id);
-
-        console.log(task);
-    } )
+        TaskService.getTaskById(id).then(
+            task=> { console.log(task) }
+            );
+    } );
 }
 
 function updateTask() {

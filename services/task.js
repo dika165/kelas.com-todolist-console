@@ -1,19 +1,19 @@
 import { getAll, getById, createTask } from "../models/task.js";
 
-export const getAllTask = () => {
-    const tasks = getAll();
+export const getAllTask = async () => {
+    const [tasks, field] = await getAll();
 
     console.log(tasks);
 }
 
-export const getTaskById = (id) => {
-    const task = getById(id);
+export const getTaskById = async (id) => {
+    const [task] = await getById(id);
 
-    console.log(task);
+    // console.log(task[0]);
+    return task[0];
 }
 
-export const addtask = (name, completed) => {
-    const id = createTask(name, completed);
-
-    console.log(`Task berhasil dibuat dengan id : ${id}`);
+export const addtask = async (name, completed) => {
+    const [result] = await createTask(name, completed);
+    console.log(`Task berhasil dibuat dengan id : ${result.insertId}`);
 }
